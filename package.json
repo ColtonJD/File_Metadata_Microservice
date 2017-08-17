@@ -2,14 +2,15 @@
   "//1": "describes your app and its dependencies",
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
-  "name": "my-glitch-app",
+  "name": "ile-meta-data-ms",
   "version": "0.0.1",
-  "description": "What am I about?",
-  "main": "server.js",
+  "description": "Upload files, get a json object with meta data back",
+  "main": "/views/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server/server.js"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "multer": "^1.3.0",
     "ng-file-upload": "^12.2.13"
@@ -18,7 +19,7 @@
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/welcome-project"
+    "url": "https://file-meta-data-ms.glitch.me/"
   },
   "license": "MIT",
   "keywords": [

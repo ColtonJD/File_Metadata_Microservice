@@ -1,17 +1,8 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
-
 <!DOCTYPE html>
 <html np-app="fileSizeApp">
   <head>
     <title>File upload service</title>
-    <meta name="See the size of a file using Angular Node.js & Express" content="A cool thing made with Glitch">
+    <meta name="See the size of a file using Angular Node.js &amp; Express" content="A cool thing made with Glitch">
     <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,14 +18,23 @@
 
     <main>
       <p>Select a file:</p>
-      <form>
-        <input type="file" name="fileToUpload">
-        <button type="submit">Submit</button>
+      <form ng-controller="fileUploadCtrl">
+        <input type="file" 
+               ngf-select
+               ng-model="up.file"
+               name="file"
+               ngf-pattern="'image/*'"
+               accept="image/*"
+               ngf-max-size="20MB"
+               />
+        <button type="submit" ng-click="up.submit()">Submit</button>
       </form>
     </main>
     <footer>
     </footer>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="../node_modules/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+    <script type="text/javascript" src="../node_modules/ng-file-upload.min.js"></script>
     <script src="/client.js"></script>
   </body>
 </html>
