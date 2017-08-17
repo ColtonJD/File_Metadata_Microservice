@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html np-app="fileSizeApp">
-  <head>
-    <title>File upload service</title>
-    <meta name="See the size of a file using Angular Node.js &amp; Express" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        File Metadata Microservice
-      </h1>
-    </header>
-
-    <main>
-      <p>Select a file:</p>
-      <form ng-controller="fileUploadCtrl">
-        <input type="file" 
-               ngf-select
-               ng-model="up.file"
-               name="file"
+<html>
+    <head>
+      <title>File upload service</title>
+      <meta name="See the size of a file using Angular Node.js &amp; Express" content="A cool thing made with Glitch">
+      <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/style.css">
+    </head>
+    <body ng-app="fileMetadataApp">
+        <h1>Angular Node File Upload</h1>
+        <form  ng-controller="MyCtrl as up" name="up.upload_form">
+                Single Image with validations
+            <input 
+               type="file" 
+               ngf-select 
+               ng-model="up.file" 
+               name="file" 
                ngf-pattern="'image/*'"
-               accept="image/*"
-               ngf-max-size="20MB"
+               accept="image/*" 
+               ngf-max-size="20MB" 
                />
-        <button type="submit" ng-click="up.submit()">Submit</button>
-      </form>
+            Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+            <i ng-show="up.upload_form.file.$error.pattern">Please select an image file (png, jpg, jpeg, or gif)</i>
+            <button type="submit" ng-click="up.submit()">submit</button>
+            <p>
+        </form>
     </main>
     <footer>
     </footer>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript" src="../node_modules/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
-    <script type="text/javascript" src="../node_modules/ng-file-upload.min.js"></script>
-    <script src="/client.js"></script>
+    
   </body>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+    <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </html>
