@@ -27,7 +27,13 @@ On the back-end,
 
 >npm install 
 
-3. From your terminal while in the root directory run:
+3. Navigate to views directory in terminal and run:
+
+>npm install ng-file-upload
+
+This should create a node_modules folder in the views directory that contains ng-file-upload for use in our AngularJS front-end. 
+
+4. From your terminal navigate back to the root directory and run:
 
 > node server.js
 

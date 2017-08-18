@@ -7,7 +7,7 @@
   "description": "Upload files, get a json object with meta data back",
   "main": "/views/index.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "angular": "^1.6.4",
