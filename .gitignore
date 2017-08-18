@@ -1,3 +1,4 @@
 .config
 .config/configstore/update-notifier-npm.json
 node_modules
+.gitconfig
