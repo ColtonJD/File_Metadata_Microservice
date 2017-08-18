@@ -28,7 +28,7 @@
             {{up.file.size / 1000000|number:1}}MB: max 20M</i>
             <i ng-show="up.upload_form.file.$error.pattern">Please select an image file (png, jpg, jpeg, or gif)</i>
             <button type="submit" ng-click="up.submit()">submit</button>
-            <p>
+            <p>{{resultJSON}}</p>
         </form>
     </main>
     <footer>

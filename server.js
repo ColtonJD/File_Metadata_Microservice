@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const multer = require('multer');
+const fs = require('fs');
 app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "http://localhost");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -59,8 +60,21 @@ app.post('/upload', (req, res, next)=>{
       res.json({error_code:1, err_desc:err});
       return;
     }
-      res.json({error_code:0, err_desc:null});
-  });
+      //Grab file path for req object, use fs to access stats, store the size in fileSizeInBytes
+      const ourFile = req.file.destination + '/' + req.file.filename;
+      let result = {
+          name: req.file.originalname,
+          encoding: req.file.encoding,
+          mimetype: req.file.mimetype,
+          size: req.file.size
+        };
+      fs.unlink(ourFile, (err) => {
+        if(err){console.log(err); throw err;}
+        console.log('temp file successfully deleted');
+      });  
+      console.log(result);
+      res.json(result);
+    });
 });
 
 app.listen(process.env.PORT | 3000, () =>{
