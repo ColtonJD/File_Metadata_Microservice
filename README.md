@@ -61,6 +61,15 @@ You can now direct image files to localhost:3000/upload | localhost:<yourport>/u
 
 ### Accepting seperate file extensions
 
-You will need to make changes to both the server logic and the front end angular logic if you wish to use both. If you will not be using the supplied front-end, you can skip the first part.
+You will need to make changes to both the server logic and the front end model if you wish to use both. If you will not be using the supplied front-end, you can skip the first part.
 
-#### Changing Front End logic
+#### Changing Front End Model
+
+The Logic in views/main.js is already set up properly. All you need to do is change the input by modifying the "ngf-pattern" and "aceept" properties. Adjust those to reflect whatever file extensiosn you wish to include.
+
+#### Changing the back-end logic 
+
+The "upload" constant in server.js contains or file check conditional. In order to included seperate file extenstions you have two choices:
+
+1. Remove the fileFilter property entirely from the upload multer object which will allow all files to be uploaded and scanned (not recommended).
+2. Add a check for you file type to the if statement which will return cb(null, true) if file type matches thus allowing your file type through. 

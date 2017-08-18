@@ -30,14 +30,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: storage,
-  //Limits multer to only upload .png, .jpg, and /jpeg. Remove fileFilter and cb if you wish to allow all file formats or change the conditional statement to include file types of preference to add new file types.
+  storage: storage, 
   fileFilter: function (req, file, cb) {
-
-        // The function should call `cb` with a boolean
-        // to indicate if the file should be accepted
-
-        // To reject this file pass `false`, like so:
+    //Limits multer to only upload .png, .jpg, .gif and /jpeg. Remove fileFilter and cb if you wish to allow all file formats or change the conditional statement to include file types of preference to add new file types or remove       the conditional statement entirely.
         if (file.mimetype === 'image/png'
             || file.mimetype === 'image/jpg'
             || file.mimetype === 'image/jpeg'
@@ -46,7 +41,7 @@ const upload = multer({
             cb(null, true);
         }
 
-        // To accept the file pass `true`, like so:
+        // Rejects the file if it does not meet the types specified in the conditional
         cb(null, false);
         console.log('Got file of type', file.mimetype);
 
