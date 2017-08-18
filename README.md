@@ -73,3 +73,16 @@ The "upload" constant in server.js contains or file check conditional. In order 
 
 1. Remove the fileFilter property entirely from the upload multer object which will allow all files to be uploaded and scanned (not recommended).
 2. Add a check for you file type to the if statement which will return cb(null, true) if file type matches thus allowing your file type through. 
+
+
+## Authors
+-------------------
+
+ColtonJD - https://github.com/ColtonJD || coltonjdale.com
+
+## Awknoledgments
+-------------------
+- Rahil Shaikh - https://ciphertrick.com/2015/12/07/file-upload-with-angularjs-and-nodejs/ - Excellent advice on getting ng-file-upload and multer to cooperate
+
+
+- freeCodeCamp.com 
