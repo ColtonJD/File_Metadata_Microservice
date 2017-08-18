@@ -1,7 +1,11 @@
 # File Metadata Microservice WIP - README Needs Updating
 =========================
 
-Upload your image and receive a JSON object with related information
+Upload your file and receive a JSON object with related information
+
+View a working example at https://file-metadata-ms-cj.glitch.me/
+
+The hosted version currently only supports images, however, it can in theory support any file type. Open that up at your own risk. 
 
 
 ## Technologies
@@ -29,7 +33,7 @@ On the back-end,
 
 3. Navigate to views directory in terminal and run:
 
->npm install ng-file-upload
+>npm install 
 
 This should create a node_modules folder in the views directory that contains ng-file-upload for use in our AngularJS front-end. 
 
@@ -38,3 +42,12 @@ This should create a node_modules folder in the views directory that contains ng
 > node server.js
 
 This should have the server running on localhost:3000. If you would like to use a seperate port, you must change the port at the end of the server.js file
+
+5. Open http://localhost:3000 | <your port> in your browser. The front end Angular app should load up. Supply any image file to test. Should return a JSON with:
+
+> {
+    name: <name>,
+    encoding: req.file.encoding,
+    mimetype: req.file.mimetype,
+    size: req.file.size
+}
