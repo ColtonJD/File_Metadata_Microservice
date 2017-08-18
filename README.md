@@ -46,8 +46,21 @@ This should have the server running on localhost:3000. If you would like to use 
 5. Open http://localhost:3000 | <your port> in your browser. The front end Angular app should load up. Supply any image file to test. Should return a JSON with:
 
 > {
-    name: <name>,
-    encoding: req.file.encoding,
-    mimetype: req.file.mimetype,
-    size: req.file.size
-}
+
+>   name: <name>,
+
+>    encoding: <encoding>,
+
+>    mimetype: <type>,
+
+>    size: <size in bytes>
+
+>}
+
+You can now direct image files to localhost:3000/upload | localhost:<yourport>/upload which will respond with a JSON object containing that data. 
+
+### Accepting seperate file extensions
+
+You will need to make changes to both the server logic and the front end angular logic if you wish to use both. If you will not be using the supplied front-end, you can skip the first part.
+
+#### Changing Front End logic
